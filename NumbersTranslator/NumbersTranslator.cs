@@ -4,211 +4,63 @@ namespace NumbersTranslator
 {
     public class NumbersTranslator
     {
-        int silnikSetek(int amount)
-        {
+        
 
-            int input = amount;
-            while (input >= 1000000000 && input <= 999999999999)
-            { // od miliarda - wyodrębniamy miliony z miliardów
-                input -= 1000000000;
-            }
-            while (input >= 1000000 && input <= 999999999)
-            { // od miliona do prawie miliarda - wyodrębniamy tysiące z milionów
-                input -= 1000000;
-            }
-            while (input >= 1000 && input <= 999999)
-            { // od tysiąca do prawie miliona - wyodrębniamy setki z tysięcy
-                input -= 1000;
-            }
-            return input;
-        }
-        int silnikTysiecy(int amount)
-        {
-
-            int input = amount;
-            while (input >= 1000000000 && input <= 999999999999)
-            { // od miliarda - wyodrębniamy miliony z miliardów
-                input -= 1000000000;
-            }
-            while (input >= 1000000 && input <= 999999999)
-            { // od miliona do prawie miliarda - wyodrębniamy tysiące z milionów
-                input -= 1000000;
-            }
-            return input;
-        }
-        int silnikMilionow(int amount)
-        {
-
-            int input = amount;
-            while (input >= 1000000000 && input <= 999999999999)
-            { // od miliarda - wyodrębniamy miliony z miliardów
-                input -= 1000000000;
-            }
-            return input;
-        }
-        string ONES(int input)
-        {
-            string output = "";
-            switch (input)
-            {
-                case 1:
-                    output = "one";
-                    break;
-                case 2:
-                    output = "two";
-                    break;
-                case 3:
-                    output = "three";
-                    break;
-                case 4:
-                    output = "four";
-                    break;
-                case 5:
-                    output = "five";
-                    break;
-                case 6:
-                    output = "six";
-                    break;
-                case 7:
-                    output = "seven";
-                    break;
-                case 8:
-                    output = "eight";
-                    break;
-                case 9:
-                    output = "nine";
-                    break;
-                case 10:
-                    output = "ten";
-                    break;
-                case 12:
-                    output = "twelve";
-                    break;
-                case 13:
-                    output = "thirteen";
-                    break;
-                case 14:
-                    output = "fourteen";
-                    break;
-                case 15:
-                    output = "fifteen";
-                    break;
-                case 16:
-                    output = "sixteen";
-                    break;
-                case 17:
-                    output = "seventeen";
-                    break;
-                case 18:
-                    output = "eighteen";
-                    break;
-                case 19:
-                    output = "nineteen";
-                    break;
-                default:
-                    break;
-            }
-            return output;
-        }
-        string TENS(int input)
-        {
-            string output = "";
-            switch (input)
-            {
-                case 1:
-                    output = "ten";
-                    break;
-                case 2:
-                    output = "twenty";
-                    break;
-                case 3:
-                    output = "thirty";
-                    break;
-                case 4:
-                    output = "fourty";
-                    break;
-                case 5:
-                    output = "fifty";
-                    break;
-                case 6:
-                    output = "sixty";
-                    break;
-                case 7:
-                    output = "seventy";
-                    break;
-                case 8:
-                    output = "eighty";
-                    break;
-                case 9:
-                    output = "ninety";
-                    break;
-                default:
-                    break;
-            }
-            return output;
-        }
-
-        string compute(int input)
-        {
-            int thousands = input / 1000;
-            int hundreds = (input / 100) - thousands * 10;
-            int tens = (input / 10) - thousands * 100 - hundreds * 10;
-            int ones = input / 1 - thousands * 1000 - hundreds * 100 - tens * 10;
-
-            string output;
-
-            if (input >= 0 && input <= 19)
-            {
-                tens = 0;
-                ones = input - hundreds * 100;
-                output = ONES(ones);
-            }
-            else if (input >= 20 && input <= 99)
-            {
-                output = TENS(tens) + " " + ONES(ones);
-            }
-            else
-            {
-                if (input - hundreds * 100 >= 0 && input - hundreds * 100 <= 19)
-                {
-                    tens = 0;
-                    ones = input - hundreds * 100;
-                }
-                output = ONES(hundreds) + " hundred " + TENS(tens) + " " + ONES(ones);
-            }
-
-
-
-            return output;
-        }
         public string Translate(int number)
         {
-            // --------------- DATA ----------------------------
+            string[] ones = { "zero", "jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć" };
+            string[] teens = { "dziesięć", "jedynaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście" };
+            string[] tens = { "", "dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt" };
+            string[] hundreds = { "", "sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset" };
+
             int input = number;
             string output = "";
-            int setki, tysiace, miliony;
 
-            // ----------- "ENGINE" --------------------------
-            setki = silnikSetek(input);
-            tysiace = silnikTysiecy(input);
-            miliony = silnikMilionow(input);
 
-            tysiace /= 1000;
-            miliony /= 1000000;
-
-            if (input <= 999)
+            if (input < 10)
             {
-                output = compute(setki);
+                output = ones[input];
             }
-            else if (input >= 999 && input <= 999999)
+            else if (input < 20)
             {
-                output = compute(tysiace) + " thousand " + compute(setki);
+                output = teens[input - 10];
             }
-            else if (input >= 999999 && input <= 999999999)
+            else if (input < 100)
             {
-                output = compute(miliony) + " milion " + compute(tysiace) + " thousand " + compute(setki);
-            }
+                int getOnes = input % 10;
+                int getTens = input - getOnes;
 
+                if (getOnes == 0)
+                {
+                    output = tens[getTens / 10];
+                }
+                else
+                {
+                    output = tens[getTens / 10] + " " + ones[getOnes];
+                }
+            }
+            else if (input < 1000)
+            {
+                int getOnes = input % 10;
+                int getTens = input % 100 - getOnes;
+                int getHundreds = input - getTens - getOnes;
+                if (getTens == 0 && getOnes == 0)
+                {
+                    output = hundreds[getHundreds / 100];
+                }
+                else if (getTens == 0 && getOnes != 0)
+                {
+                    output = hundreds[getHundreds / 100] + " " + ones[getOnes];
+                }
+                else if (getTens != 0 && getOnes == 0)
+                {
+                    output = hundreds[getHundreds / 100] + " " + tens[getTens / 10];
+                }
+                else
+                {
+                    output = hundreds[getHundreds / 100] + " " + tens[getTens / 10] + " " + ones[getOnes];
+                }
+            }
             return output;
 
         }

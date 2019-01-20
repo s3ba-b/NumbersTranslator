@@ -9,9 +9,10 @@ namespace NumbersTranslator.Tests
         [Test]
         public void Translator_TranslationFromIntToString_ReturnProperString_Test1()
         {
+            // nazwa testu
             var numTranslator = new NumbersTranslator();
             string translatedNumber = numTranslator.Translate(457); // param wejsciowe metody
-            Assert.AreEqual("czterysta pięćdziesiąt siedem", translatedNumber); // wartosc oczekiwana
+            Assert.AreEqual("four hundred fifty seven", translatedNumber); // wartosc oczekiwana
         }
         [Test]
         public void Translator_TranslationFromIntToString_ReturnProperString_Test2()

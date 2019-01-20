@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumbersTranslator", "NumbersTranslator\NumbersTranslator.csproj", "{0F93A6E0-E53E-404D-8ABD-ED7E6B82A513}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbersTranslator", "NumbersTranslator\NumbersTranslator.csproj", "{0F93A6E0-E53E-404D-8ABD-ED7E6B82A513}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumbersTranslator.Tests", "NumbersTranslator.Tests\NumbersTranslator.Tests.csproj", "{88829331-E24D-4964-810B-7663224C54C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumbersTranslator.Tests", "NumbersTranslator.Tests\NumbersTranslator.Tests.csproj", "{88829331-E24D-4964-810B-7663224C54C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

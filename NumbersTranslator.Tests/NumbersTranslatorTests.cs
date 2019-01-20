@@ -11,8 +11,8 @@ namespace NumbersTranslator.Tests
         {
             // nazwa testu
             var numTranslator = new NumbersTranslator();
-            string translatedNumber = numTranslator.Translate(4); // param wejsciowe metody
-            Assert.AreEqual("cztery", translatedNumber); // wartosc oczekiwana
+            string translatedNumber = numTranslator.Translate(457); // param wejsciowe metody
+            Assert.AreEqual("four hundred fifty seven", translatedNumber); // wartosc oczekiwana
         }
     }
 }

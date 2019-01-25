@@ -61,6 +61,10 @@ namespace NumbersTranslator
                     output = hundreds[getHundreds / 100] + " " + tens[getTens / 10] + " " + ones[getOnes];
                 }
             }
+            else
+            {
+                output = "Program obecnie obsługuje liczby do 999.";
+            }
             return output;
 
         }

@@ -1,0 +1,3 @@
+Projekt stworzony w Visual Studio 2017.
+Target framework net472 dla testu i klasy.
+System operacyjny: Win 10 Pro
